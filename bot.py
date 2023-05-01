@@ -5,6 +5,13 @@ import os
 from config import Config
 from pyrogram import Client as Clinton
 
+#To inform that the bot is ready to be used
+def send_status_message(Warrior):
+    Warrior.send_message(
+        chat_id=Config.OWNER_ID,
+        text='I am READY!✅'
+    )
+
 if __name__ == "__main__" :
     # create download directory, if not exist
     if not os.path.isdir(Config.DOWNLOAD_LOCATION):
@@ -15,4 +22,6 @@ if __name__ == "__main__" :
     api_id=Config.API_ID,
     api_hash=Config.API_HASH,
     plugins=plugins)
+    with Warrior:
+        send_status_message(Warrior)
     Warrior.run()
